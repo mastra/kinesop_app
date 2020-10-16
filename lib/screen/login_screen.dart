@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kinesio/screen/user_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -42,6 +44,8 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 child: RaisedButton(
                   onPressed: () {
+                    Get.to(UserScreen());
+
                     //controller.login(emailController.text, passwordController.text);
                   },
                   child: Text("Entrar"),
