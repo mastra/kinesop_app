@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kinesio/main.dart';
+import 'package:get/get.dart';
 
 class UserScreen extends StatelessWidget {
   Widget userData(BuildContext context, String title, String subTitle) {
@@ -60,6 +61,7 @@ class UserScreen extends StatelessWidget {
               ),
               divider,
               Container(
+                padding: EdgeInsets.only(top: 10.0, bottom: 8),
                 color: Colors.yellow,
                 width: double.infinity,
                 child: Text(
@@ -73,6 +75,54 @@ class UserScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Text("Sintoma de consulta",
                     style: Theme.of(context).textTheme.headline3),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              divider,
+              Container(
+                padding: EdgeInsets.only(top: 10.0, bottom: 8),
+                color: Colors.yellow,
+                width: double.infinity,
+                child: Text(
+                  "Dias restantes para el alta:",
+                  style: heading3gray,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              Container(
+                color: Colors.yellow,
+                width: double.infinity,
+                child: Text("18 dias",
+                    style: Theme.of(context).textTheme.headline3),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              FlatButton(
+                color: Colors.black38,
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Expanded(child: Text("DESCARGAR PLAN NUTRICIONAL")),
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              FlatButton(
+                color: Colors.black38,
+                onPressed: () {
+                  Get.to()
+                },
+                child: Row(
+                  children: [
+                    Expanded(child: Text("VER PLANILLA DE EJERCICIOS")),
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
               ),
             ],
           ),
