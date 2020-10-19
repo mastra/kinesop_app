@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import './screen/login_screen.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 TextStyle heading2gray = TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kinesio/main.dart';
 import 'package:get/get.dart';
+import 'calendar_screen.dart';
 
 class UserScreen extends StatelessWidget {
   Widget userData(BuildContext context, String title, String subTitle) {
@@ -115,7 +116,7 @@ class UserScreen extends StatelessWidget {
               FlatButton(
                 color: Colors.black38,
                 onPressed: () {
-                  Get.to()
+                  Get.to(CalendarScreen());
                 },
                 child: Row(
                   children: [
