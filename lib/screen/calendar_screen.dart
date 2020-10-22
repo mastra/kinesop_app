@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kinesio/screen/work_screen.dart';
 import 'package:table_calendar/table_calendar.dart';
-//import 'package:intl/intl.dart' show DateFormat;
+import 'package:intl/intl.dart' show DateFormat;
+import 'package:get/get.dart';
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -18,57 +20,63 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final _selectedDay = DateTime.now();
 
     _events = {
-      _selectedDay.subtract(Duration(days: 30)): [
-        'Event A0',
-        'Event B0',
-        'Event C0'
-      ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1'],
-      _selectedDay.subtract(Duration(days: 20)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
-      ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
       _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
+        'Calentamiento A0',
+        'Ejercicio B0',
+        'Elongacion C0'
       ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
+      _selectedDay.subtract(Duration(days: 27)): ['Ejercicio A1'],
+      // _selectedDay.subtract(Duration(days: 20)): [
+      //   'Evento A2',
+      //   'Evento B2',
+      //   'Evento C2',
+      //   'Evento D2'
+      // ],
+      _selectedDay.subtract(Duration(days: 16)): [
+        'Calentamiento A3',
+        'Ejercicio B3'
       ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
+      // _selectedDay.subtract(Duration(days: 10)): [
+      //   'Evento A4',
+      //   'Evento B4',
+      //   'Evento C4'
+      // ],
+      // _selectedDay.subtract(Duration(days: 4)): [
+      //   'Evento A5',
+      //   'Evento B5',
+      //   'Evento C5'
+      // ],
+      _selectedDay.subtract(Duration(days: 2)): [
+        'Calentamiento A6',
+        'Ejercicio B6'
+      ],
+      _selectedDay: ['Ejercicio A7'],
       _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
+        'Calentamiento A8',
+        'Ejercicio B8',
+        'Ejercicio C8',
+        'Elongacion D8'
       ],
-      _selectedDay.add(Duration(days: 3)):
-          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
-      _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
-      ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
-      _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12'
-      ],
-      _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
-      _selectedDay.add(Duration(days: 26)): [
-        'Event A14',
-        'Event B14',
-        'Event C14'
-      ],
+      // _selectedDay.add(Duration(days: 3)):
+      //     Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
+      // _selectedDay.add(Duration(days: 7)): [
+      //   'Evento A10',
+      //   'Evento B10',
+      //   'Evento C10'
+      // ],
+      // _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
+      // _selectedDay.add(Duration(days: 17)): [
+      //   'Evento A12',
+      //   'Evento B12',
+      //   'Evento C12',
+      //   'Evento D12'
+      // ],
+      // _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
+      // _selectedDay.add(Duration(days: 26)): [
+      //   'Evento A14',
+      //   'Evento B14',
+      //   'Evento C14'
+      // ],
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -85,7 +93,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("plan"),
+        title: Text("Planilla de ejercicios"),
+        centerTitle: true,
+        backgroundColor: Colors.black26,
+        elevation: 0,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -126,20 +137,32 @@ class _CalendarScreenState extends State<CalendarScreen> {
       events: _events,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
+        markersPositionTop: -24,
         weekendStyle: TextStyle(color: Colors.black38),
         selectedColor: Colors.black26,
         todayColor: Colors.black,
-        markersColor: Colors.brown[700],
+        markersColor: Colors.black26,
         outsideDaysVisible: false,
+        renderDaysOfWeek: true,
+      ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        dowTextBuilder: (date, locale) =>
+            DateFormat.E(locale).format(date).toUpperCase(),
+        weekendStyle: TextStyle(
+          //backgroundColor: Colors.green,
+          color: Colors.black54,
+        ),
       ),
       initialCalendarFormat: CalendarFormat.month,
       availableCalendarFormats: {CalendarFormat.month: "mes"},
       headerStyle: HeaderStyle(
+        titleTextBuilder: (date, locale) =>
+            DateFormat.MMMM(locale).format(date).toUpperCase(),
         centerHeaderTitle: true,
         formatButtonTextStyle:
             TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
+          color: Colors.green,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
@@ -149,103 +172,27 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  Widget _buildEventsMarker(DateTime date, List events) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: _calendarController.isSelected(date)
-            ? Colors.brown[500]
-            : _calendarController.isToday(date)
-                ? Colors.brown[300]
-                : Colors.blue[400],
-      ),
-      width: 16.0,
-      height: 16.0,
-      child: Center(
-        child: Text(
-          '${events.length}',
-          style: TextStyle().copyWith(
-            color: Colors.white,
-            fontSize: 12.0,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHolidaysMarker() {
-    return Icon(
-      Icons.add_box,
-      size: 20.0,
-      color: Colors.blueGrey[800],
-    );
-  }
-
-  Widget _buildButtons() {
-    final dateTime = _events.keys.elementAt(_events.length - 2);
-
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
-        ),
-      ],
-    );
-  }
-
   Widget _buildEventList() {
     return ListView(
       children: _selectedEvents
           .map((event) => Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.8),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
                 margin:
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 child: ListTile(
-                  title: Text(event.toString()),
-                  onTap: () => print('$event tapped!'),
+                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //children: [
+                  title: Text(
+                    event.toString(),
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  trailing: Text("Lun 1"),
+                  leading: Icon(
+                    Icons.run_circle_rounded,
+                    color: Colors.black26,
+                    size: 30,
+                  ),
+                  // Text("Lun 1"),
+                  onTap: () => Get.to(WorkScreen()),
                 ),
               ))
           .toList(),

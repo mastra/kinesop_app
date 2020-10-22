@@ -7,6 +7,23 @@ void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
+TextStyle heading1 = TextStyle(
+  fontSize: 34,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+TextStyle heading2 = TextStyle(
+  fontSize: 28,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+
+TextStyle heading3 = TextStyle(
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+
 TextStyle heading2gray = TextStyle(
   fontSize: 28,
   fontWeight: FontWeight.bold,
@@ -33,25 +50,14 @@ TextStyle heading5gray = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.grey,
 );
+TextStyle bodytext1 = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.normal,
+  color: Colors.black,
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  final TextStyle heading1 = TextStyle(
-    fontSize: 34,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
-  );
-  final TextStyle heading2 = TextStyle(
-    fontSize: 28,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
-  );
-
-  final TextStyle heading3 = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
-  );
 
   final TextStyle heading5 = TextStyle(
     fontSize: 17,
@@ -69,7 +75,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          fontFamily: 'SfPro',
+          fontFamily: 'Poppins',
           //primaryColor: Colors.lightBlue[800],
           //accentColor: Colors.cyan[600],
           textTheme: TextTheme(
@@ -79,6 +85,7 @@ class MyApp extends StatelessWidget {
             headline4: heading4,
             headline5: heading5,
             button: buttonText,
+            bodyText1: bodytext1,
           ),
           primarySwatch: Colors.red,
           visualDensity: VisualDensity.adaptivePlatformDensity,

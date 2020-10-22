@@ -63,7 +63,7 @@ class UserScreen extends StatelessWidget {
               divider,
               Container(
                 padding: EdgeInsets.only(top: 10.0, bottom: 8),
-                color: Colors.yellow,
+                //color: Colors.yellow,
                 width: double.infinity,
                 child: Text(
                   "Dolencia",
@@ -72,7 +72,7 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.yellow,
+                //color: Colors.yellow,
                 width: double.infinity,
                 child: Text("Sintoma de consulta",
                     style: Theme.of(context).textTheme.headline3),
@@ -83,7 +83,7 @@ class UserScreen extends StatelessWidget {
               divider,
               Container(
                 padding: EdgeInsets.only(top: 10.0, bottom: 8),
-                color: Colors.yellow,
+                //color: Colors.yellow,
                 width: double.infinity,
                 child: Text(
                   "Dias restantes para el alta:",
@@ -92,7 +92,7 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.yellow,
+                //color: Colors.yellow,
                 width: double.infinity,
                 child: Text("18 dias",
                     style: Theme.of(context).textTheme.headline3),

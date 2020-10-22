@@ -52,9 +52,13 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   fonts:
-    - family: SfPro
+    - family: Poppins
       fonts:
-        - asset: fonts/FontsFree-Net-SFProDisplay-Regular.ttf
+        - asset: Poppins-Medium.ttf
+        - asset: Popping-Bold.ttf
+          weight: 700
+        - asset: Poppings-Thin.ttf
+          weight: 100
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
