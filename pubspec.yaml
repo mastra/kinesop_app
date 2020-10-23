@@ -54,10 +54,10 @@ flutter:
   fonts:
     - family: Poppins
       fonts:
-        - asset: Poppins-Medium.ttf
-        - asset: Popping-Bold.ttf
+        - asset: fonts/Poppins-Medium.ttf
+        - asset: fonts/Poppins-Black.ttf
           weight: 700
-        - asset: Poppings-Thin.ttf
+        - asset: fonts/Poppins-Thin.ttf
           weight: 100
 
   # An image asset can refer to one or more resolution-specific "variants", see
