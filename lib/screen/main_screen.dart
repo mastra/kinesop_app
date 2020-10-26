@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kinesio/screen/calendar_screen.dart';
 import 'package:kinesio/screen/feedback_screen.dart';
-import 'package:kinesio/screen/inbox_screen.dart';
+//import 'package:kinesio/screen/inbox_screen.dart';
 import 'package:kinesio/screen/user_screen.dart';
 
 /// This is the stateful widget that the main application instantiates.
@@ -14,14 +14,24 @@ class MainScreen extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MainScreenState extends State<MainScreen> {
+  void changeToCalendar() {
+    _onItemTapped(1);
+  }
+
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _screens = <Widget>[
-    UserScreen(),
-    CalendarScreen(),
-    InboxScreen("pagina 3"),
-  ];
+  //static const TextStyle optionStyle =  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = <Widget>[
+      UserScreen(changeToCalendar),
+      CalendarScreen(),
+      FeedbackScreen(),
+    ];
+  }
+
   PageController _pageController = PageController();
 
   void _onItemTapped(int index) {

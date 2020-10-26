@@ -25,8 +25,9 @@ dependencies:
     sdk: flutter
   get: ^3.13.2
   table_calendar: ^2.2.3
-  #flutter_calendar_carousel: ^1.5.1
-
+  #table_calendar:
+  #  git:
+  #    url: https://github.com/mastra/table_calendar
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

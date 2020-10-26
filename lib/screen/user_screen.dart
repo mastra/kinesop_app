@@ -1,11 +1,12 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:kinesio/main.dart';
-import 'package:get/get.dart';
-import 'calendar_screen.dart';
+//import 'package:get/get.dart';
 
 class UserScreen extends StatelessWidget {
+  final VoidCallback changeTab;
+
+  UserScreen(this.changeTab);
+
   Widget userData(BuildContext context, String title, String subTitle) {
     return Column(
       children: [
@@ -26,12 +27,12 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const divider = Divider(
-      height: 1,
-      thickness: 1,
-      indent: 10,
-      endIndent: 10,
-    );
+    // const divider = Divider(
+    //   height: 1,
+    //   thickness: 1,
+    //   indent: 10,
+    //   endIndent: 10,
+    // );
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -180,7 +181,8 @@ class UserScreen extends StatelessWidget {
                       color: Colors.black,
                       textColor: Colors.white,
                       onPressed: () {
-                        Get.to(CalendarScreen());
+                        //Get.to(CalendarScreen());
+                        changeTab();
                       },
                       child: Row(
                         children: [

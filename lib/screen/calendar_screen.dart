@@ -153,6 +153,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         renderDaysOfWeek: true,
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
+        //decoration: BoxDecoration(color: Colors.yellow),
         dowTextBuilder: (date, locale) =>
             DateFormat.E(locale).format(date).toUpperCase(),
         weekendStyle: TextStyle(
@@ -163,6 +164,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       initialCalendarFormat: CalendarFormat.month,
       availableCalendarFormats: {CalendarFormat.month: "mes"},
       headerStyle: HeaderStyle(
+        decoration: BoxDecoration(color: Colors.white),
         titleTextBuilder: (date, locale) =>
             DateFormat.MMMM(locale).format(date).toUpperCase(),
         centerHeaderTitle: true,

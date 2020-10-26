@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FeedbackScreen extends StatelessWidget {
-  final String title;
-
-  FeedbackScreen(this.title);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("FEEDBACK"),
       ),
       body: Container(
         child: ListView.builder(
