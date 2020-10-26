@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kinesio/screen/calendar_screen.dart';
+import 'package:kinesio/screen/feedback_screen.dart';
 import 'package:kinesio/screen/inbox_screen.dart';
+import 'package:kinesio/screen/user_screen.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class MainScreen extends StatefulWidget {
@@ -15,8 +18,8 @@ class _MainScreenState extends State<MainScreen> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _screens = <Widget>[
-    InboxScreen("pageina 1"),
-    InboxScreen("pagina 2"),
+    UserScreen(),
+    CalendarScreen(),
     InboxScreen("pagina 3"),
   ];
   PageController _pageController = PageController();
@@ -34,26 +37,27 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       body: PageView(
         onPageChanged: _onPageChanged,
         controller: _pageController,
         children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.person),
+            label: 'Perfil',
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.calendar_today_outlined),
+            label: 'Ejercicios',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.comment),
+            label: 'Feedback',
           ),
         ],
         currentIndex: _selectedIndex,

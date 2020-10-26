@@ -45,6 +45,11 @@ TextStyle heading4gray = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.grey,
 );
+TextStyle heading5 = TextStyle(
+  fontSize: 17,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
 TextStyle heading5gray = TextStyle(
   fontSize: 17,
   fontWeight: FontWeight.bold,
@@ -58,12 +63,6 @@ TextStyle bodytext1 = TextStyle(
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-
-  final TextStyle heading5 = TextStyle(
-    fontSize: 17,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
-  );
 
   final TextStyle buttonText = TextStyle(
     fontSize: 17,
@@ -90,7 +89,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.red,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           buttonTheme: ButtonThemeData(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(14),
             buttonColor: Colors.black,
             textTheme: ButtonTextTheme.normal,
           )),

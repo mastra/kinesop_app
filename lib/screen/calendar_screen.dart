@@ -93,21 +93,28 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Planilla de ejercicios"),
+        title: Text(
+          "EJERCICIOS",
+          style: TextStyle(color: Colors.black26, fontSize: 14),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.black26,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          Expanded(child: _buildEventList()),
-        ],
+      body: Container(
+        color: Colors.black12,
+        padding: EdgeInsets.only(left: 4, right: 4),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            // Switch out 2 lines below to play with TableCalendar's settings
+            //-----------------------
+            _buildTableCalendar(),
+            // _buildTableCalendarWithBuilders(),
+            const SizedBox(height: 8.0),
+            Expanded(child: _buildEventList()),
+          ],
+        ),
       ),
     );
   }
@@ -175,26 +182,37 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget _buildEventList() {
     return ListView(
       children: _selectedEvents
-          .map((event) => Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: ListTile(
-                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //children: [
-                  title: Text(
-                    event.toString(),
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  trailing: Text("Lun 1"),
-                  leading: Icon(
-                    Icons.run_circle_rounded,
-                    color: Colors.black26,
-                    size: 30,
-                  ),
-                  // Text("Lun 1"),
-                  onTap: () => Get.to(WorkScreen()),
+          .map((event) => FlatButton(
+              onPressed: () => Get.to(WorkScreen()),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
                 ),
-              ))
+                margin: const EdgeInsets.all(4),
+                padding: EdgeInsets.all(14),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Lunes 1/10",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        event.toString(),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Recuperacion",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ]
+                    // Text("Lun 1"),
+
+                    ),
+              )))
           .toList(),
     );
   }
