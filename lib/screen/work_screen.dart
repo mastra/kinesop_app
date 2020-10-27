@@ -1,46 +1,59 @@
 import 'package:flutter/material.dart';
 
 class WorkScreen extends StatelessWidget {
-  Widget workCard(BuildContext context, String title, String cat, String rep) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            child: Container(
-              color: Colors.blue,
-            ),
-            width: 50,
-            height: 50,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(cat),
-              SizedBox(height: 4),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.headline5,
+  Widget workCard(BuildContext context, String title, String desc, String cat,
+      String rep, int num) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          margin: EdgeInsets.only(top: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                child: Image.asset("images/ejercicio$num.png"),
+                width: 100,
+                height: 100,
               ),
-              SizedBox(height: 4),
-              Text(rep),
-            ]),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      SizedBox(height: 4),
+                      Text(desc),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.timer_sharp,
+                            color: Colors.black38,
+                          ),
+                          Text(rep),
+                          SizedBox(
+                            width: 80,
+                          ),
+                          Icon(
+                            Icons.campaign_sharp,
+                            color: Colors.black38,
+                          ),
+                          Text("x$num"),
+                        ],
+                      )
+                    ]),
+              ),
+            ],
           ),
-          FlatButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Text("Ver video",
-                      style: Theme.of(context).textTheme.bodyText2),
-                  Icon(Icons.chevron_right)
-                ],
-              ))
-        ],
-      ),
+        ),
+        Divider(height: 8, thickness: 8, color: Colors.black12)
+      ],
     );
   }
 
@@ -48,60 +61,52 @@ class WorkScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Planilla de ejercicios"),
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Text(
+          "Ejercicios",
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.black26,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        //mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(8),
-            color: Colors.black26,
-            child: Center(
-              child: Text(
-                "Ejercicio 1",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(color: Colors.white),
+      body: SingleChildScrollView(
+        child: Column(
+          //mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(8),
+              color: Colors.white,
+              child: Center(
+                child: Text(
+                  "Lunes 30/10",
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.all(10),
-              children: [
-                SizedBox(height: 20),
-                FlatButton(
-                  color: Colors.black12,
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Text("DESCARGAR PLAN NUTRICIONAL"),
-                      Icon(Icons.chevron_right),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10),
-                workCard(context, "Ejercicio", "Movilidad", "30seg"),
-                workCard(context, "Ejercicio 2", "Movilidad", "30seg"),
-                workCard(context, "Ejercicio 3", "Movilidad", "30seg"),
-                workCard(context, "Estocada", "", "5x5"),
-                workCard(context, "Estocada 2", "", "5x5"),
-                workCard(context, "Estocada 3", "", "5x5"),
-                workCard(context, "Tocar pies 15kg a los lados", "Flexibilidad",
-                    "5x5"),
-                workCard(context, "Tocar pies 15kg a los lados2",
-                    "Flexibilidad", "5x5"),
-                workCard(context, "Tocar pies 15kg a los lados 3",
-                    "Flexibilidad", "5x5"),
-              ],
+            Divider(
+              thickness: 4,
+              color: Colors.black38,
+              height: 4,
             ),
-          ),
-        ],
+//                  SizedBox(height: 10),
+            workCard(context, "Rana", "Texto explicadivo ejercicio",
+                "Movilidad", "30seg", 1),
+            workCard(context, "90/90Activo", "Texto explicadivo ejercicio",
+                "Movilidad", "30seg", 2),
+            workCard(context, "Estocada", "Texto explicadivo ejercicio",
+                "Movilidad", "30seg", 3),
+            workCard(context, "Tocar pies", "Texto explicadivo ejercicio", "",
+                "5x5", 1),
+            workCard(context, "Recuperacion", "Texto explicadivo ejercicio", "",
+                "5x5", 3),
+            workCard(context, "Estabilidad", "Texto explicadivo ejercicio", "",
+                "5x5", 2),
+          ],
+        ),
       ),
     );
   }

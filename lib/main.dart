@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import './screen/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+//import 'package:flutter/rendering.dart';
 
 void main() {
+  //debugPaintSizeEnabled = true;
   initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
