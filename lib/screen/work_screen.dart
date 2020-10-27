@@ -1,59 +1,66 @@
 import 'package:flutter/material.dart';
 
 class WorkScreen extends StatelessWidget {
-  Widget workCard(BuildContext context, String title, String desc, String cat,
-      String rep, int num) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8.0),
-          margin: EdgeInsets.only(top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                child: Image.asset("images/ejercicio$num.png"),
-                width: 100,
-                height: 100,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      SizedBox(height: 4),
-                      Text(desc),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.timer_sharp,
-                            color: Colors.black38,
-                          ),
-                          Text(rep),
-                          SizedBox(
-                            width: 80,
-                          ),
-                          Icon(
-                            Icons.campaign_sharp,
-                            color: Colors.black38,
-                          ),
-                          Text("x$num"),
-                        ],
-                      )
-                    ]),
-              ),
-            ],
+  Widget workCard(BuildContext context, int ikey, String title, String desc,
+      String cat, String rep, int num) {
+    return Dismissible(
+      //confirmDismiss: (direction) async {
+      //  return false;
+      //},
+      background: stackBehindDismiss(),
+      key: ObjectKey(ikey),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            margin: EdgeInsets.only(top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  child: Image.asset("images/ejercicio$num.png"),
+                  width: 100,
+                  height: 100,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(height: 4),
+                        Text(desc),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.timer_sharp,
+                              color: Colors.black38,
+                            ),
+                            Text(rep),
+                            SizedBox(
+                              width: 80,
+                            ),
+                            Icon(
+                              Icons.campaign_sharp,
+                              color: Colors.black38,
+                            ),
+                            Text("x$num"),
+                          ],
+                        )
+                      ]),
+                ),
+              ],
+            ),
           ),
-        ),
-        Divider(height: 8, thickness: 8, color: Colors.black12)
-      ],
+          Divider(height: 8, thickness: 8, color: Colors.black12)
+        ],
+      ),
     );
   }
 
@@ -93,20 +100,33 @@ class WorkScreen extends StatelessWidget {
               height: 4,
             ),
 //                  SizedBox(height: 10),
-            workCard(context, "Rana", "Texto explicadivo ejercicio",
+            workCard(context, 1, "Rana", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 1),
-            workCard(context, "90/90Activo", "Texto explicadivo ejercicio",
+            workCard(context, 2, "90/90Activo", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 2),
-            workCard(context, "Estocada", "Texto explicadivo ejercicio",
+            workCard(context, 3, "Estocada", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 3),
-            workCard(context, "Tocar pies", "Texto explicadivo ejercicio", "",
-                "5x5", 1),
-            workCard(context, "Recuperacion", "Texto explicadivo ejercicio", "",
-                "5x5", 3),
-            workCard(context, "Estabilidad", "Texto explicadivo ejercicio", "",
-                "5x5", 2),
+            workCard(context, 4, "Tocar pies", "Texto explicadivo ejercicio",
+                "", "5x5", 1),
+            workCard(context, 5, "Recuperacion", "Texto explicadivo ejercicio",
+                "", "5x5", 3),
+            workCard(context, 6, "Estabilidad", "Texto explicadivo ejercicio",
+                "", "5x5", 2),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget stackBehindDismiss() {
+    return Container(
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.only(right: 20.0),
+      color: Colors.green,
+      child: Icon(
+        Icons.check,
+        color: Colors.white,
+        size: 50,
       ),
     );
   }

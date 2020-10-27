@@ -25,6 +25,51 @@ class UserScreen extends StatelessWidget {
     );
   }
 
+  void showPlanDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)), //this right here
+            child: Container(
+              height: 300,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.check,
+                      size: 100,
+                      color: Colors.black,
+                    ),
+                    Text("El Plan Nutricional fue descargado en tu teléfono",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 22)),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("Cerrar"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      color: Colors.black,
+                      textColor: Colors.white,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     // const divider = Divider(
@@ -167,7 +212,7 @@ class UserScreen extends StatelessWidget {
                     ),
                     FlatButton(
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () => showPlanDialog(context),
                       child: Row(
                         children: [
                           Icon(Icons.download_outlined),
