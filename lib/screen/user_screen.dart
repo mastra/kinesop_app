@@ -34,21 +34,26 @@ class UserScreen extends StatelessWidget {
     //   endIndent: 10,
     // );
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "PERFIL",
+          style: TextStyle(color: Colors.black26, fontSize: 14),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.only(
-                top: 100,
+                top: 10,
                 bottom: 10,
               ),
               color: Colors.white,
               child: Column(
                 children: [
-                  Text(
-                    "Perfil",
-                    style: TextStyle(fontSize: 14, color: Colors.black26),
-                  ),
                   Icon(
                     Icons.person_pin,
                     color: Colors.black26,

@@ -64,7 +64,7 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
 
             // poner realease aca para buildear!!!!!!!!!
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release //debug
         }
     }
 }

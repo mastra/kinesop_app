@@ -101,19 +101,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Container(
-        color: Colors.black12,
-        padding: EdgeInsets.only(left: 4, right: 4),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            // Switch out 2 lines below to play with TableCalendar's settings
-            //-----------------------
-            _buildTableCalendar(),
-            // _buildTableCalendarWithBuilders(),
-            const SizedBox(height: 8.0),
-            Expanded(child: _buildEventList()),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.black12,
+          padding: EdgeInsets.only(left: 4, right: 4),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              // Switch out 2 lines below to play with TableCalendar's settings
+              //-----------------------
+              _buildTableCalendar(),
+              // _buildTableCalendarWithBuilders(),
+              const SizedBox(height: 8.0),
+              _buildEventList(),
+            ],
+          ),
         ),
       ),
     );
@@ -182,7 +184,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   Widget _buildEventList() {
-    return ListView(
+    return Column(
       children: _selectedEvents
           .map((event) => FlatButton(
               onPressed: () => Get.to(WorkScreen()),
