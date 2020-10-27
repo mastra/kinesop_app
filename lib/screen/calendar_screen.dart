@@ -5,6 +5,9 @@ import 'package:intl/intl.dart' show DateFormat;
 import 'package:get/get.dart';
 
 class CalendarScreen extends StatefulWidget {
+  final VoidCallback nextTab;
+  CalendarScreen(this.nextTab);
+
   @override
   _CalendarScreenState createState() => new _CalendarScreenState();
 }
@@ -187,7 +190,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Column(
       children: _selectedEvents
           .map((event) => FlatButton(
-              onPressed: () => Get.to(WorkScreen()),
+              onPressed: () => Get.to(WorkScreen(widget.nextTab)),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(

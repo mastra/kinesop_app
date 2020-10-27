@@ -136,7 +136,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   children: [
                     Spacer(),
                     FlatButton(
-                      onPressed: () {},
+                      onPressed: () => showDoneDialog(context),
                       color: Colors.black,
                       textColor: Colors.white,
                       child: Text("Enviar feedback"),
@@ -152,5 +152,56 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         ),
       ),
     );
+  }
+
+  void showDoneDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)), //this right here
+            child: Container(
+              height: 300,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.check,
+                      size: 100,
+                      color: Colors.black,
+                    ),
+                    Text("¡Ejercicio completado!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 22)),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    Text("Seguí así, estas cerca de tu recuperación",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16, color: Colors.black38)),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("Cerrar"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      color: Colors.black,
+                      textColor: Colors.white,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

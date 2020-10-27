@@ -18,6 +18,11 @@ class _MainScreenState extends State<MainScreen> {
     _onItemTapped(1);
   }
 
+  void changeToFeedback() {
+    _onItemTapped(2);
+    print("next 2");
+  }
+
   int _selectedIndex = 0;
   //static const TextStyle optionStyle =  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _screens;
@@ -27,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _screens = <Widget>[
       UserScreen(changeToCalendar),
-      CalendarScreen(),
+      CalendarScreen(changeToFeedback),
       FeedbackScreen(),
     ];
   }
@@ -71,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        //selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
     );

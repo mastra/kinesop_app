@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WorkScreen extends StatelessWidget {
+  final VoidCallback nextTab;
+
+  WorkScreen(this.nextTab);
+
   Widget workCard(BuildContext context, int ikey, String title, String desc,
       String cat, String rep, int num) {
     return Dismissible(
@@ -52,7 +56,7 @@ class WorkScreen extends StatelessWidget {
                             ),
                             Text("x$num"),
                           ],
-                        )
+                        ),
                       ]),
                 ),
               ],
@@ -112,6 +116,30 @@ class WorkScreen extends StatelessWidget {
                 "", "5x5", 3),
             workCard(context, 6, "Estabilidad", "Texto explicadivo ejercicio",
                 "", "5x5", 2),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    nextTab();
+                  },
+                  child: Text("Finalizar entrenamiento"),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  color: Colors.black,
+                  textColor: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),
