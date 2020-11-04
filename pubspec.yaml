@@ -53,6 +53,7 @@ flutter:
      - images/ejercicio1.png
      - images/ejercicio2.png
      - images/ejercicio3.png
+     - images/logo.png
 
   fonts:
     - family: Poppins
