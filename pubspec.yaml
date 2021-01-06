@@ -23,8 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^3.13.2
-  table_calendar: ^2.2.3
+  get: 3.20.1
+  table_calendar: 2.3.3
   #table_calendar:
   #  git:
   #    url: https://github.com/mastra/table_calendar

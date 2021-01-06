@@ -53,7 +53,7 @@ TextStyle heading5 = TextStyle(
   color: Colors.black,
 );
 TextStyle heading5gray = TextStyle(
-  fontSize: 17,
+  fontSize: 15,
   fontWeight: FontWeight.bold,
   color: Colors.grey,
 );

@@ -107,8 +107,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black12,
-          padding: EdgeInsets.only(left: 4, right: 4),
+          margin: EdgeInsets.zero,
+          //padding: EdgeInsets.only(left: 4, right: 4),
           child: Column(
+            //crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               // Switch out 2 lines below to play with TableCalendar's settings
@@ -141,6 +143,27 @@ class _CalendarScreenState extends State<CalendarScreen> {
     print('CALLBACK: _onCalendarCreated');
   }
 
+  Widget _buildEventsMarker(DateTime date, List events) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        shape: BoxShape.rectangle,
+        color: _calendarController.isSelected(date)
+            ? Colors.black
+            : date.day < 15
+                ? Colors.black26
+                : Colors.red,
+      ),
+      width: 6.0,
+      height: 6.0,
+      child: Text(
+        //'${events.length}',
+        "",
+      ),
+    );
+  }
+
 // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
     return TableCalendar(
@@ -149,13 +172,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
       events: _events,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        markersPositionTop: -24,
-        weekendStyle: TextStyle(color: Colors.black38),
-        selectedColor: Colors.black26,
+        //markersPositionTop: 0,
+        weekendStyle: TextStyle(color: Colors.black12),
+        selectedColor: Colors.red,
         todayColor: Colors.black,
         markersColor: Colors.black26,
         outsideDaysVisible: false,
+        markersPositionBottom: 0,
+        markersMaxAmount: 1,
         renderDaysOfWeek: true,
+        weekdayStyle: TextStyle(color: Colors.white),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
         //decoration: BoxDecoration(color: Colors.yellow),
@@ -163,7 +189,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             DateFormat.E(locale).format(date).toUpperCase(),
         weekendStyle: TextStyle(
           //backgroundColor: Colors.green,
-          color: Colors.black54,
+          color: Colors.white,
         ),
       ),
       initialCalendarFormat: CalendarFormat.month,
@@ -183,23 +209,43 @@ class _CalendarScreenState extends State<CalendarScreen> {
       onDaySelected: _onDaySelected,
       onVisibleDaysChanged: _onVisibleDaysChanged,
       onCalendarCreated: _onCalendarCreated,
+      builders: CalendarBuilders(
+        markersBuilder: (context, date, events, holidays) {
+          final children = <Widget>[];
+
+          if (events.isNotEmpty) {
+            children.add(
+              Positioned(
+                left: 18,
+                bottom: 0,
+                child: _buildEventsMarker(date, events),
+              ),
+            );
+          }
+
+          return children;
+        },
+      ),
     );
   }
 
   Widget _buildEventList() {
     return Column(
       children: _selectedEvents
-          .map((event) => FlatButton(
-              onPressed: () => Get.to(WorkScreen(widget.nextTab)),
+          .map((event) => InkWell(
+              onTap: () => Get.to(WorkScreen(widget.nextTab)),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black26),
+                  //border: Border.all(color: Colors.black26),
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                 ),
-                margin: const EdgeInsets.all(4),
-                padding: EdgeInsets.all(14),
+                margin: const EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 8,
+                ),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -207,13 +253,51 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         "Lunes 1/10",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        event.toString(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(Icons.calendar_today),
+                          Text(
+                            "2 Ejercicios",
+                            style: TextStyle(fontSize: 13),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Icon(Icons.timer),
+                          Text(
+                            "50 min",
+                            style: TextStyle(fontSize: 13),
+                          ),
+                          RawMaterialButton(
+                            onPressed: () {},
+                            fillColor: Colors.black,
+                            child: Icon(
+                              Icons.play_arrow,
+                              size: 20.0,
+                              color: Colors.white,
+                            ),
+                            padding: EdgeInsets.all(2.0),
+                            shape: CircleBorder(),
+                          )
+                        ],
                       ),
                       SizedBox(height: 10),
-                      Text(
-                        "Recuperacion",
-                        style: TextStyle(fontSize: 14),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.red,
+                            size: 10,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Recuperacion",
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ],
                       ),
                     ]
                     // Text("Lun 1"),

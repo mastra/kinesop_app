@@ -5,69 +5,6 @@ class WorkScreen extends StatelessWidget {
 
   WorkScreen(this.nextTab);
 
-  Widget workCard(BuildContext context, int ikey, String title, String desc,
-      String cat, String rep, int num) {
-    return Dismissible(
-      //confirmDismiss: (direction) async {
-      //  return false;
-      //},
-      background: stackBehindDismiss(),
-      key: ObjectKey(ikey),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            margin: EdgeInsets.only(top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  child: Image.asset("images/ejercicio$num.png"),
-                  width: 100,
-                  height: 100,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                        SizedBox(height: 4),
-                        Text(desc),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.timer_sharp,
-                              color: Colors.black38,
-                            ),
-                            Text(rep),
-                            SizedBox(
-                              width: 80,
-                            ),
-                            Icon(
-                              Icons.campaign_sharp,
-                              color: Colors.black38,
-                            ),
-                            Text("x$num"),
-                          ],
-                        ),
-                      ]),
-                ),
-              ],
-            ),
-          ),
-          Divider(height: 8, thickness: 8, color: Colors.black12)
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,18 +41,18 @@ class WorkScreen extends StatelessWidget {
               height: 4,
             ),
 //                  SizedBox(height: 10),
-            workCard(context, 1, "Rana", "Texto explicadivo ejercicio",
+            WorkCardWidget(1, "Rana", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 1),
-            workCard(context, 2, "90/90Activo", "Texto explicadivo ejercicio",
+            WorkCardWidget(2, "90/90Activo", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 2),
-            workCard(context, 3, "Estocada", "Texto explicadivo ejercicio",
+            WorkCardWidget(3, "Estocada", "Texto explicadivo ejercicio",
                 "Movilidad", "30seg", 3),
-            workCard(context, 4, "Tocar pies", "Texto explicadivo ejercicio",
-                "", "5x5", 1),
-            workCard(context, 5, "Recuperacion", "Texto explicadivo ejercicio",
-                "", "5x5", 3),
-            workCard(context, 6, "Estabilidad", "Texto explicadivo ejercicio",
-                "", "5x5", 2),
+            WorkCardWidget(
+                4, "Tocar pies", "Texto explicadivo ejercicio", "", "5x5", 1),
+            WorkCardWidget(
+                5, "Recuperacion", "Texto explicadivo ejercicio", "", "5x5", 3),
+            WorkCardWidget(
+                6, "Estabilidad", "Texto explicadivo ejercicio", "", "5x5", 2),
             SizedBox(
               height: 20,
             ),
@@ -142,6 +79,110 @@ class WorkScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class WorkCardWidget extends StatefulWidget {
+  final int ikey;
+  final String title;
+  final String desc;
+  final String cat;
+  final String rep;
+  final int num;
+  bool done = false;
+  WorkCardWidget(
+      this.ikey, this.title, this.desc, this.cat, this.rep, this.num);
+  @override
+  _WorkCardWidgetState createState() => _WorkCardWidgetState();
+}
+
+class _WorkCardWidgetState extends State<WorkCardWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        buildActiveCard(context),
+        widget.done
+            ? Positioned.fill(
+                child: Opacity(
+                  opacity: 0.5, //!widget.done ? 0.0 : 0.75,
+                  //child: Expanded(
+                  child: Container(
+                    color: Colors.black,
+                  ),
+                  // ),
+                ),
+              )
+            : Container(),
+      ],
+    );
+  }
+
+  Widget buildActiveCard(BuildContext context) {
+    return Dismissible(
+      //confirmDismiss: (direction) async {
+      //  return false;
+      //},
+      background: stackBehindDismiss(),
+      key: ObjectKey(widget.ikey),
+      confirmDismiss: (direction) {
+        setState(() {
+          widget.done = true;
+        });
+
+        return Future.value(false);
+      },
+      onDismissed: (direction) {},
+      child: Column(
+        children: [
+          Container(
+            //color: Color.fromARGB(100, 0, 0, 0),
+            padding: const EdgeInsets.all(8.0),
+            margin: EdgeInsets.only(top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(height: 4),
+                        Text(widget.desc),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.timer_sharp,
+                              color: Colors.black38,
+                            ),
+                            Text(widget.rep),
+                            Expanded(
+                                child: Container(
+                              color: Colors.red,
+                            )),
+                            SizedBox(
+                                // width: ,
+                                ),
+                            Icon(
+                              Icons.campaign_sharp,
+                              color: Colors.black38,
+                            ),
+                            Text("x${widget.num}"),
+                          ],
+                        ),
+                      ]),
+                ),
+              ],
+            ),
+          ),
+          Divider(height: 8, thickness: 8, color: Colors.black12)
+        ],
       ),
     );
   }

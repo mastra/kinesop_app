@@ -83,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {
                           //Get.to(Signup());
                         },
-                        child: Text("Registro"),
+                        child: Text("Recuperar contraseña"),
                       )
                     ],
                   ),
