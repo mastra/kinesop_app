@@ -1,0 +1,28 @@
+Cambos app
+
+Login: 
+X    - Creo q Registro no iría, solamente va la opción de recuperar contraseña.
+    - Agregar los 3 slides de bienvenida que van a explicar el uso de la app
+
+Perfil: 
+ X   - Dejar fix el nombre y los datos. 
+    - El mail y el teléfono dejarlos en la misma linea mismo tamaño, y q se ajuste en caso de ser el tel mas chico, en 1 linea
+    - Cambiar fondo gris (diseño) para q no quede muy apagado. 240,240,240
+    - Tu especialista achicarlo 2 puntos
+
+Ejercicios: 
+X    - Poner los dias en el menu del mes en blanco. 
+X    - Punto rojo de ejercicio pendiente del día ponerlo abajo centrado del numero del día, no arriba y q sea 1 solo.
+X    - Circulo gris dejarlo solo en los días que se completó la rutina
+X    - Circulo negro cuando estas parado en el día
+X    - Módulo ejercicios agregarle los recursos de figma (filete negro, iconos, estado del ejercicio y botón play)
+    - Agregarle el icono para ver el calendario anual con todos los meses
+X    - Al tachar el ejercicio, que no desaparezca, que solamente quede el nombre por lo menos desactivado.
+X    - La ilustración del ejercicio vuela, hay q alinear todo el texto a la izq 
+
+Feedback:
+    - No me acuerdo en que habíamos quedado, pero queda raro q al entrar a feedback tengas la opción de mandar feedback. Podemos hacer que nos muestre en caso de no haber completado ningún ejercicio, un historial mensual, semanal, lo q sea con el feedback enviado?
+    X Una vez q se envia el feedback, te redirecciona al calendario de ejercicios.
+    no pasa
+    X No se si es mi teléfono o q, pero en comentarios cuando apretó para tipear no tengo opción de cerrar el teclado
+    aca no pasa
