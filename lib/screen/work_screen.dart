@@ -42,17 +42,17 @@ class WorkScreen extends StatelessWidget {
             ),
 //                  SizedBox(height: 10),
             WorkCardWidget(1, "Rana", "Texto explicadivo ejercicio",
-                "Movilidad", "30seg", 1),
+                "Movilidad", "30seg", 1, false),
             WorkCardWidget(2, "90/90Activo", "Texto explicadivo ejercicio",
-                "Movilidad", "30seg", 2),
+                "Movilidad", "30seg", 2, false),
             WorkCardWidget(3, "Estocada", "Texto explicadivo ejercicio",
-                "Movilidad", "30seg", 3),
-            WorkCardWidget(
-                4, "Tocar pies", "Texto explicadivo ejercicio", "", "5x5", 1),
-            WorkCardWidget(
-                5, "Recuperacion", "Texto explicadivo ejercicio", "", "5x5", 3),
-            WorkCardWidget(
-                6, "Estabilidad", "Texto explicadivo ejercicio", "", "5x5", 2),
+                "Movilidad", "30seg", 3, false),
+            WorkCardWidget(4, "Tocar pies", "Texto explicadivo ejercicio", "",
+                "5x5", 1, false),
+            WorkCardWidget(5, "Recuperacion", "Texto explicadivo ejercicio", "",
+                "5x5", 3, false),
+            WorkCardWidget(6, "Estabilidad", "Texto explicadivo ejercicio", "",
+                "5x5", 2, false),
             SizedBox(
               height: 20,
             ),
@@ -84,6 +84,7 @@ class WorkScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class WorkCardWidget extends StatefulWidget {
   final int ikey;
   final String title;
@@ -91,9 +92,9 @@ class WorkCardWidget extends StatefulWidget {
   final String cat;
   final String rep;
   final int num;
-  bool done = false;
-  WorkCardWidget(
-      this.ikey, this.title, this.desc, this.cat, this.rep, this.num);
+  bool done;
+  WorkCardWidget(this.ikey, this.title, this.desc, this.cat, this.rep, this.num,
+      this.done);
   @override
   _WorkCardWidgetState createState() => _WorkCardWidgetState();
 }

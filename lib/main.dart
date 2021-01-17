@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kinesio/screen/intro_screen.dart';
 import './screen/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -23,7 +24,7 @@ TextStyle heading2 = TextStyle(
 TextStyle heading3 = TextStyle(
   fontSize: 22,
   fontWeight: FontWeight.bold,
-  color: Colors.black,
+  color: Color.fromARGB(0xff, 0xFF, 0x54, 0x54),
 );
 
 TextStyle heading2gray = TextStyle(
@@ -95,7 +96,7 @@ class MyApp extends StatelessWidget {
             buttonColor: Colors.black,
             textTheme: ButtonTextTheme.normal,
           )),
-      home: LoginScreen(),
+      home: IntroScreen(),
     );
   }
 }
