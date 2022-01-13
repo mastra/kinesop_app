@@ -1,16 +1,11 @@
-# kinesio
+# Kinesio App
 
-A new Flutter project.
+Flutter project con app Android y iOS para los pacientes y Webapp para los kinesiologos
+Los doctores/entrenadores/kinesiologos publican las rutinas para los pacientes
+Reciben comentarios y feeeback de esfuerzo
+Seguimiento del progreso y graficos
 
-## Getting Started
+Los pacientes reciben las rutinas
+Tiene un calendario y la rutina de cada dia
+Pueden escribir comentarios y dar un score a cada dia en diferenets aspectos del esfuerzo, duracion, fuerza, cansacio,etc
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
